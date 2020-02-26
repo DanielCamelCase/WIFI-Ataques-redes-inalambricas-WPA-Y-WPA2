@@ -18,7 +18,20 @@
 <a name="item1"></a>
 ### Chequeo de tarjeta y resolucion de conflictos
  
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+--Chequeamos las tarjetas de red en busca de la tarjeta inalambrica que pondremos en modo monitor:
+```    $ ifconfig ```
+En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
+```    $ airmon-ng start wlan0 ```
+    
+--Si tenemos procesos conflictivos los matamos :
+
+ ```   
+    $ airmon check kill
+    o
+    $ kill -9 y su PID  --- $ kill -9 702
+    o
+    $ killall nombre1 nombre2 --- $ killall dhcpclient wpa_supplicant
+ ```
  
 [Subir](#top)
  
