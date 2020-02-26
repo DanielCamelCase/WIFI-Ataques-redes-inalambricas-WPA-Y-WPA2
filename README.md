@@ -100,7 +100,7 @@ En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
 ### Seleccionada la victima vamos a especificar el escaneo para indagar en ella 
    Airodump-ng -canal -PuntoAccesoVictima     interfaz de red nuestra 
    
-``` $ airodump-ng -c 1 --bssid 20:34:FB:B1:F5:53 wlan0mon ```
+``` $ airodump-ng -c 1 --bssid XX:XX:XX:B1:F5:XX wlan0mon ```
 
 -- Otra forma seria atraves del nombre de la red victima 
    Airodump-ng -canal -PuntoAccesoVictima  interfaz de red nuestra
