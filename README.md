@@ -90,26 +90,32 @@ En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
 ### Ver puntos de acceso cercanos
 
 ``` $ airodump-ng wlan0mon ``` Despues de un par de minutos crtl+x
-    En funcion del tipo de ataque que lancemos necesitaremos que el  BSSID tenga clientes conectados 
-    o no pero con esta informacion tendremos una idea del entorno en el que estamos y la actividad que hay en el 
+
+  En funcion del tipo de ataque que lancemos necesitaremos que el  BSSID tenga clientes conectados 
+   o no pero con esta informacion tendremos una idea del entorno en el que estamos y la actividad que hay en el 
  
 [Subir](#top)
 
 <a name="item5"></a>
 ### Seleccionada la victima vamos a especificar el escaneo para indagar en ella 
    Airodump-ng -canal -PuntoAccesoVictima     interfaz de red nuestra 
+   
 ``` $ airodump-ng -c 1 --bssid 20:34:FB:B1:F5:53 wlan0mon ```
-Otra forma seria atraves del nombre de la red victima 
-    Airodump-ng -canal -PuntoAccesoVictima  interfaz de red nuestra 
+
+-- Otra forma seria atraves del nombre de la red victima 
+   Airodump-ng -canal -PuntoAccesoVictima  interfaz de red nuestra
+    
 ``` $ airodump-ng -c 1 --essid MovistarE34A wlan0mon ```
+ 
  
 [Subir](#top)
  
 <a name="item6"></a>
 ### Guardar un .cap de la victima seleccionada para posteriormente trabajar sobre el:
  
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ Airodump-ng -canal -FicheroDest -PuntoAccesoVictima  interfaz de red nuestra 
  
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+``` $ airodump-ng -c 1 -w Captura --essid MovistarE34A wlan0mon ```
+
  
 [Subir](#top)
