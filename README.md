@@ -7,12 +7,13 @@
 * [Chequeo de tarjeta y resolucion de conflictos](#item1)
 * [MAC Spoofing](#item2)
 * [Resolucion de problemas de visibilidad y servicios WIFI](#item3)
-## Fase de Explotacion de sistema en Windows 
-
-* [Contenido 4](#item4)
+## Analisis del entorno  
+* [Ver puntos de acceso cercanos](#item4)
+* [Seleccionada la victima vamos a especificar el escaneo para indagar en ella](#item5)
+* [Guardar un .cap de la victima seleccionada para posteriormente trabajar sobre el](#item6)
 ## Fase de Explotacion en WEB 
-* [Contenido 5](#item5)
-* [Contenido 6](#item6)
+
+* [Contenido 7](#item7)
  
  
 <a name="item1"></a>
@@ -86,25 +87,26 @@ En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
 [Subir](#top)
  
 <a name="item4"></a>
-### Contenido 4
- 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
- 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
- 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### Ver puntos de acceso cercanos
+
+``` $ airodump-ng wlan0mon ``` Despues de un par de minutos crtl+x
+    En funcion del tipo de ataque que lancemos necesitaremos que el  BSSID tenga clientes conectados 
+    o no pero con esta informacion tendremos una idea del entorno en el que estamos y la actividad que hay en el 
  
 [Subir](#top)
 
 <a name="item5"></a>
-### Contenido 5
- 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+### Seleccionada la victima vamos a especificar el escaneo para indagar en ella 
+   Airodump-ng -canal -PuntoAccesoVictima     interfaz de red nuestra 
+``` $ airodump-ng -c 1 --bssid 20:34:FB:B1:F5:53 wlan0mon ```
+Otra forma seria atraves del nombre de la red victima 
+    Airodump-ng -canal -PuntoAccesoVictima  interfaz de red nuestra 
+``` $ airodump-ng -c 1 --essid MovistarE34A wlan0mon ```
  
 [Subir](#top)
  
 <a name="item6"></a>
-### Contenido 6
+### Guardar un .cap de la victima seleccionada para posteriormente trabajar sobre el:
  
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
  
