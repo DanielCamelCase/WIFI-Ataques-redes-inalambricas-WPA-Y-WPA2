@@ -1,13 +1,13 @@
 # WIFI_Ataques_redes_inalambricas
 
 <a name="top"></a>
-# Tabla de referencia de los contenidos para visualizacion rapida
+# Tabla de referencia de los contenidos para visualizacion
  
-## Configuraciones Iniciales de la tarjeta de red inalambrica 
+### Configuraciones Iniciales de la tarjeta de red inalambrica 
 * [Chequeo de tarjeta y resolucion de conflictos](#item1)
 * [MAC Spoofing](#item2)
 * [Resolucion de problemas de visibilidad y servicios WIFI](#item3)
-## Analisis del entorno  
+### Analisis del entorno  
 * [Ver puntos de acceso cercanos](#item4)
 * [Seleccionada la victima vamos a especificar el escaneo para indagar en ella](#item5)
 * [Guardar un .cap de la victima seleccionada para posteriormente trabajar sobre el](#item6)
