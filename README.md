@@ -19,8 +19,10 @@
 ### Chequeo de tarjeta y resolucion de conflictos
  
 --Chequeamos las tarjetas de red en busca de la tarjeta inalambrica que pondremos en modo monitor:
+
 ```    $ ifconfig ```
 En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
+
 ```    $ airmon-ng start wlan0 ```
     
 --Si tenemos procesos conflictivos los matamos :
