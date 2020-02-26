@@ -1,7 +1,7 @@
 # WIFI_Ataques_redes_inalambricas
 
 <a name="top"></a>
-# Tabla de referencia de los contenidos para visualizacion
+## Tabla de referencia de los contenidos para visualizacion global
  
 ### Configuraciones Iniciales de la tarjeta de red inalambrica 
 * [Chequeo de tarjeta y resolucion de conflictos](#item1)
@@ -11,19 +11,19 @@
 * [Ver puntos de acceso cercanos](#item4)
 * [Seleccionada la victima vamos a especificar el escaneo para indagar en ella](#item5)
 * [Guardar un .cap de la victima seleccionada para posteriormente trabajar sobre el](#item6)
-## Tecnicas de Ataque 
+### Tecnicas de Ataque 
 * [Explicacion de operadoresusados de aireplay-ng](#item7.0)
 * [ATAQUE DE DESAUTENTIFICACION DIRIGIDO](#item7)
 * [ATAQUE DE DESAUTENTIFICACION GLOBAL](#item8)
 * [ATAQUE DDOS (DENIED OF SERVICE)](#item9)
 * [ATAQUE BEACON FLOOD MODE ATTACK](#item10)
 * [ATAQUE DISASSOCIATION AMOK MODE ATTACK](#item11)
-## VALIDACIONES DE HANDSHAKE
+### VALIDACIONES DE HANDSHAKE
 * [VALIDANDO CON PYRiT](#item12)
-## TRATAMIENTO DE LA CAPTURA 
+### TRATAMIENTO DE LA CAPTURA 
 * [TRATANDO LA CAPTURA DEL HANDSHAKE](#item13)
 * [EXTRACCION DEL HASH EN EL  HANDSHAKE](#item14)
-## FUERZA BRUTA AL HASH > CONTRASEÑA
+### FUERZA BRUTA AL HASH > CONTRASEÑA
 * [CON JOHN THE RIPPER](#item15)
 * [FUERZA BRUTA CON AIRCRACK](#item16)
 * [FUERZA BRUTA CON GEMPMK](#item17)
