@@ -309,7 +309,9 @@ Una forma de ir 450 veces mas rapido que con aircrack-ng es con gempmk pero tien
     La contra de primero convertir el diccionario a dic.genpmk  
     
 ``` $ genpmk -f rockyou.txt -d rockyou.genpmk -s MOVISTAR_3E5A ```   (EN -s se pone el nombre del SSID )
+
  Cuando termino de realizar la precomputacion del .dic a .genpmk
+ 
 ``` $ pyrit -e   MOVISTAR_3E5A -i rockyou.genpmk -r Captura-01.cap attack_cowpatty ```
 
 [Subir](#top)
